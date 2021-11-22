@@ -1,15 +1,33 @@
-name: Deploy
+name: Upload Website
 
-on: push
+on:
+ push:
+   branches:
+     - hw_5_forms
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "hw5-forms" #Must be unique in Heroku
-          heroku_email: "orenkole@gmail.com"
-          branch: "hw_5_forms"
+ Deploy:
+   runs-on: ubuntu-latest
+   steps:
+     - name: Checkout
+       uses: actions/checkout@v2
+
+     - name: Setup node
+       uses: actions/setup-node@v2
+
+     - name: Install dependencies
+       run: npm install
+
+     - name: Build static file
+       run: npm run build
+
+     - name: Configure AWS Credentials
+       uses: aws-actions/configure-aws-credentials@v1
+       with:
+         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         aws-region: us-east-1
+
+     - name: Deploy static site to S3 bucket
+       run: aws s3 sync ./build s3://otus-hw
+
