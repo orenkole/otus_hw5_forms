@@ -12,4 +12,4 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "otus_hw6_forms" #Must be unique in Heroku
           heroku_email: "orenkole@gmail.com"
-          branch: "hw_5_forms"
+          branch: "hw5-forms"
