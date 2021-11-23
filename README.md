@@ -1,5 +1,7 @@
 # Otus homework 5: Components lifecycle. Списки, события, формы
 
+**Деплой:** http://otus-hw.s3-website.us-east-2.amazonaws.com/
+
 **Цель:**
 Используем styled-components для разработки и манипуляции стилями.
 Добавим стили в компоненты, разработанные в рамках предыдущего ДЗ.
@@ -17,7 +19,7 @@
 - покрыть новый функционал тестами
 - добавить stories для отображения изменений
 - Разработать элементы управления приложением
-Пример https://codepen.io/freeCodeCamp/full/reGdqx
+  Пример https://codepen.io/freeCodeCamp/full/reGdqx
 
 Какие элементы управления нужны в приложении?
 
